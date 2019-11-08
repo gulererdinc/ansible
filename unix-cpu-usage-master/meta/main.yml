@@ -1,0 +1,35 @@
+galaxy_info:
+  author: Egor Margineanu
+  description: Role for handling CPU usage on Unix/Linux servers
+  company: IBM
+
+  license: UNLICENSED
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Fedora
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - wheezy
+        - jessie
+        - stretch
+    - name: Ubuntu
+      versions:
+        - precise
+        - trusty
+        - xenial
+        - bionic
+
+  galaxy_tags:
+    - unix
+    - cpu
+    - ubuntu
+    - fedora
+    - rhel

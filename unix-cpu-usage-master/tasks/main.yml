@@ -1,0 +1,20 @@
+---
+- name: Get top 1 cpu consuming process
+  shell: "ps -efo pcpu,pid,user,args --no-headers | sort -k1 -r -n | grep -v grep | awk '{print $2}' | head -1"
+  register: top_1_process_id
+
+- name: Kill process
+  shell: "kill {{ item }}"
+  with_items: "{{ top_1_process_id.stdout_lines }}"
+
+- name: Wait for process to be killed
+  wait_for:
+    path: "/proc/{{ item }}/status"
+    state: absent
+  with_items: "{{ top_1_process_id.stdout_lines }}"
+  ignore_errors: yes
+  register: killed_processes
+
+- name: Force kill stuck processes
+  shell: "kill -9 {{ item }}"
+  with_items: "{{ killed_processes.results | select('failed') | map(attribute='item') | list }}"
