@@ -1,5 +1,6 @@
----
- - name: "Get hostname"
-   shell: echo $HOSTNAME
-   register: result
-   - debug: Hostname="{result.stdout}"
+- name: Hello World Sample
+  hosts: all
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
