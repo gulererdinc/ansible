@@ -1,5 +1,8 @@
 ---
  - name: "Get hostname"
+   hosts: all
+   tasks:
    shell: echo $HOSTNAME
    register: result
-   - debug: Hostname="{result.stdout}"
+     - debug: msg="{result.stdout}"
+
