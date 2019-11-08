@@ -2,7 +2,7 @@
  - name: "Get hostname"
    hosts: all
    tasks:
-   shell: echo $HOSTNAME
-   register: result
-     - debug: msg="{result.stdout}"
+     - shell: echo $HOSTNAME
+       register: result
+       debug: msg="{result.stdout}"
 
