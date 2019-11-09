@@ -1,7 +1,7 @@
 ---
-- name: Run powershell script
+- name: Ping 
   hosts: all 
-  gather_facts: false
+
   tasks:
-    - name: Run powershell script
-      script: files/helloworld.ps1
+  - name: ping
+    win_ping:
