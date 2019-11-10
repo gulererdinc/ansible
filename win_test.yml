@@ -21,3 +21,10 @@
       register: stat_file
 
     - debug: var=stat_file
+- name: tunnel destroy
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: create tunnel
+      shell: ps axuf |grep 1234 | grep ssh |awk '{print "kill -9 " $1}'
