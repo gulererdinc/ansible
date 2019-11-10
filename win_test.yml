@@ -4,7 +4,7 @@
   connection: local
   tasks:
     - name: create tunnel
-      shell: ssh -v -i $JH2_SSH_PRIVATE_KEY -oProxyCommand="ssh -i $JH1_SSH_PRIVATE_KEY -W {{ jh2_ip }}:{{ jh2_ssh_port }} {{ jh1_ssh_user }}@{{ jh1_ip }}\" {{ jh2_ssh_user }}@{{ jh2_ip }}"
+      shell: ssh -i {{$JH1_SSH_PRIVATE_KEY}} -fN -L 1234:localhost:{{ jh1_ssh_port }} {{ jh1_ssh_user }}@{{ jh1_ip }}
 - name: test raw module
   hosts: all 
   tasks:
@@ -21,3 +21,4 @@
       register: stat_file
 
     - debug: var=stat_file
+}}
