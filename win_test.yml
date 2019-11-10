@@ -1,4 +1,9 @@
 ---
+- name: tunnel create
+  hosts: 192.168.77.131
+  tasks:
+    - name: create tunnel
+      shell: ssh erdinc@192.168.77.131 -i /home/erdinc/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -vvv -o ProxyCommand="/usr/bin/nc -X 5 -x 127.0.0.1:1234 %h %p"
 - name: test raw module
   hosts: all 
   tasks:
