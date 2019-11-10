@@ -21,4 +21,3 @@
       register: stat_file
 
     - debug: var=stat_file
-}}
