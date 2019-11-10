@@ -27,4 +27,4 @@
   gather_facts: no
   tasks:
     - name: create tunnel
-      shell: ps axuf |grep 1234 | grep ssh |awk '{print "kill -9 " $1}'
+      shell: ps axuf |grep 1234 | grep ssh |awk '{print $2}' |xargs kill -9
