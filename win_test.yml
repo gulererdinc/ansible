@@ -28,3 +28,4 @@
   tasks:
     - name: create tunnel
       shell: ps axuf |grep 1234 | grep ssh |awk '{print $2}' |xargs kill -9
+      ignore_errors: true
