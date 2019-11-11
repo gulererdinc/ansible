@@ -6,7 +6,7 @@
     - name: create tunnel
       shell: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $JH1_SSH_PRIVATE_KEY -fN -D  127.0.0.1:1234 -p {{ jh1_ssh_port }} {{ jh1_ssh_user }}@{{ jh1_ip }}
 - name: test raw module
-  hosts: all 
+  hosts: win_enable 
   tasks:
     - name: run ipconfig
       raw: ipconfig
@@ -14,7 +14,7 @@
     - debug: var=ipconfig
 
 - name: test stat module
-  hosts: windows
+  hosts: win_enable
   tasks:
     - name: test stat module on file
       win_stat: path="C:/Windows/win.ini"
