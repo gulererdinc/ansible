@@ -1,6 +1,6 @@
 ---
 - name: tunnel create
-  hosts: localhost
+  hosts: all
   connection: local
   tasks:
     - name: create tunnel (2jh)
