@@ -4,7 +4,7 @@
   connection: local
   tasks:
     - name: create tunnel (2jh)
-      shell: ssh -W -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no -oProxyCommand="ssh -i $JH1_SSH_PRIVATE_KEY -W {{ jh2_ip }}:{{ jh2_ssh_port }} -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null {{ jh1_ssh_user }}@{{ jh1_ip }}" -fN -D  127.0.0.1:1234 -p {{ jh1_ssh_port }} {{ jh2_ssh_user }}@{{ jh2_ip }}
+      shell: ssh -i $JH2_SSH_PRIVATE_KEY -W -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no -oProxyCommand="ssh -i $JH1_SSH_PRIVATE_KEY -W {{ jh2_ip }}:{{ jh2_ssh_port }} -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null {{ jh1_ssh_user }}@{{ jh1_ip }}" -fN -D  127.0.0.1:1234 -p {{ jh1_ssh_port }} {{ jh2_ssh_user }}@{{ jh2_ip }}
 - name: test raw module
   hosts: win_enable 
   tasks:
