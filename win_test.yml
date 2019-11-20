@@ -14,7 +14,7 @@
     - debug: var=ipconfig
 
 - name: test stat module
-  hosts: win_enable
+  hosts: all
   tasks:
     - name: test stat module on file
       win_stat: path="C:/Windows/win.ini"
